@@ -217,15 +217,20 @@ It’s good practice to run the ```sudo ufw enable``` first thing because it tur
 Port forwarding in VirtualBox is a second approach to allow external connections to the virtual machine. It determines how traffic from the host machine is directed to the virtual machine. By this approach, external systems can connect to the host machine's IP address and port 4242. VirtualBox forwards that connection to the virtual machine's port 4242. However, using the first approach (```sudo ufw allow 4242```) allows for direct connection to the virtual machine using the virtual machine's IP address and port 4242.
 
 - **Port forwarding** can be achieved by specifying the host port and guest port configuration in Port forwarding in the Network section. Note that the host port is the port on the host machine, and the guest port is the port on the virtual machine. You specify that requests coming to the host machine on port 4242 will be forwarded to port 4242 on the virtual machine.
+
 - ```sudo systemctl restart ssh``` : updating the configuration including any changes related to the port that the SSH server is listening on.
+
 - ```ssh username@<host_machine_ip> -p 4242``` : remotely connect to the VM via SSH. You need to specify the ip address of the physical machine that’s hosting your VM and by doing so the port forwarding rules will take care of redirecting the connection to the virtual machine, or you just directly specify that of the VM. If the machine you are trying to connect from is the same as the host machine, you can use localhost loopback address ```*ssh username@127.0.0.1 -p 4242``` to establish the connection from the host machine itself.
+
 - ```exit``` : to disconnect from the VM.
 ### 8.5 - Setting password policy
 ### 
 
-- **sudo apt-get install libpam-pwquality** : install the Pluggable Authentication Module (PAM) package for password quality checking. It offers features to enforce password policies by configuring the PAM configuration files on your system.
-- **sudo vim /etc/pam.d/common-password :** access the PAM configuration file to change password policies.
-- **password requisite pam_pwquality.so retry=3 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root :**
+- ```sudo apt-get install libpam-pwquality``` : install the Pluggable Authentication Module (PAM) package for password quality checking. It offers features to enforce password policies by configuring the PAM configuration files on your system.
+
+- ```sudo vim /etc/pam.d/common-password``` : access the PAM configuration file to change password policies.
+
+- ```password requisite pam_pwquality.so retry=3 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root``` :
     
     retry= specifies the number of times a user can attempt to enter a new password.
     
@@ -246,29 +251,45 @@ Port forwarding in VirtualBox is a second approach to allow external connections
     enforce_for_root= Since root users have more flexibility, this enforces the parameters even for the root user except for difok (root doesnt remember any previous passwords).
     
 - ```sudo vim /etc/login.defs``` : Configuration file containing default settings related to user accounts and password policies, used by the **login** and **passwd** utilities.
+
 - ```PASS_MAX_DAYS 30 , PASS_MIN_DAYS 2 , PASS_WARN_AGE 7``` :  Modifying the default password aging policy for user accounts.
+
 - ```sudo reboot (optional)```: Reboot to have the changes take effect immediately. If not, the changes will be applied after the user had logged out.
+
 - ```chage -m <num>, chage -M <num>, chage -W <num>``` : Modify minimum number of days between password changes, password expiration period, set a warning of <num> days before expiration.
+
 - ```chage -l username``` : Display the current password aging information for the specified user and for the root.
 ### 8.6 - Creating groups, users, assigning 👤
 ### 
 
-- ```sudo groupadd user42``` : Creating groups to organize users to collectively manage permissions, access, and resources for a set of users**.**
+- ```sudo groupadd user42``` : Creating groups to organize users to collectively manage permissions, access, and resources for a set of users.
+  
 - ```getent group <group_name>```: Search and display information about a specific group in the system's group database.
+
 - ```cd /etc/passwd``` : Access the file containing the names of all users on the system.
+
 - ```sudo delgroup <group_name>``` : To delete a certain group.
+
 - ```sudo usermod -aG user42 username``` : Adding the user to the user24 group.
+
 - ```groups``` : See which groups the user account belongs to
 ### 8.7 - Configuring Sudoers file, logs, warning message
 ### 
 
 - ```cd /var/log``` : Access the location where log files are stored, providing information about system events, services, processes.
+
 - Each action using sudo has to be archived, both inputs and outputs. To do so, **create a folder** (name it sudo for clarity), then create a file.log, and save the path to that file.
+
 - ```sudo vim /etc/sudoers or sudo visudo``` : Access the sudoers file responsible for defining the rules and permissions that determine which users or groups are allowed to execute commands with elevated privileges using the sudo command.
+
 - ```Defaults	badpass_message="Wrong password, please try again!"``` : Adding warning message ****
+
 - ```Defaults passwd_tries=3``` : Sets a default value for the maximum number of password entry attempts allowed when a user runs sudo.
+
 - ```Defaults	logfile="/var/log/sudo/sudo.log"``` : Sets the location for the sudo log file.
+
 - ```Defaults	log_input, log_output``` : Enable logging of both input (commands typed by user) and output (result) for sudo commands.
+
 - ```Defaults	requiretty``` : (teletypewriter) By requiring a TTY, it limits the ability of users to run sudo commands from scripts or automated processes by adding an extra layer of authentication ensuring that users physically present at the console are the ones executing privileged commands.
 ## 9- Script
 A script should start automatically, display informations, run every 10 minutes broadcast to all terminals using wall (send a message to all logged-in users), include banner (optional), avoid displaying error messages directly to the users.
@@ -276,28 +297,28 @@ A script should start automatically, display informations, run every 10 minutes 
 Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores programs you can run)
 ### Common commands
 
-**grep** : search for specific patterns.
+```grep``` : Search for specific patterns.
 
-**sort :** arrange lines in specific order. (default, ascending alphabetical order).
+```sort``` : Arrange lines in specific order. (default, ascending alphabetical order).
 
-**uniq :** eliminate duplicated lines.
+```uniq``` : Eliminate duplicated lines.
 
-**wc -l** : count number of lines. (wc alone is to count words, lines, and characters)
+```wc -l``` : Count number of lines. (wc alone is to count words, lines, and characters)
 
-**free —mega** : display information about system memory usage. m for megabytes
+```free —mega``` : Display information about system memory usage. m for megabytes
 
-**NR** : In Awk, NR is a built-in variable that represents the current line number being processed. Awk reads input data line by line, and NR keeps track of the line number.
+```NR``` : In Awk, NR is a built-in variable that represents the current line number being processed. Awk reads input data line by line, and NR keeps track of the line number.
 
-**free** : displays info for RAM memory 
+```free``` : displays info for RAM memory 
 
-**df** :displays info about storage or disk space
+```df``` :displays info about storage or disk space
 
-**mpstat** : displays cpu processor related info
+```mpstat``` : displays cpu processor related info
 
-**lsblk** : displays system storage info
+```lsblk``` : displays system storage info
 ### Script
 
-- **#!/bin/bash** : shebang, recognize the script as executable and execute based on the specified path to the interpreter (bash).
+- ```#!/bin/bash``` : shebang, recognize the script as executable and execute based on the specified path to the interpreter (bash).
 - **Architecture of the OS and the kernel version:** ```ARCH=$(uname -a)```
 - **Number of physical processors:** ```PCPU=$(grep "physical id" /proc/cpuinfo | sort -u | wc -l)```
 - **Number of virtual processors:** ```VCPU=$(grep "processor" /proc/cpuinfo | wc -l)``` total number of logical (virtual) processors, aka number of cores.
@@ -368,12 +389,18 @@ wall “
 
 The Crontab (table) command is used to create, view, edit, or delete the cron jobs for a user. Crontab allows you to schedule a task that automates the execution of commands or scripts for a time interval. Cron is chronos (time) in greek. 
 
-- ```chmod 777 monitoring.sh``` : Give permission to the script (execute especially)
+- ```chmod 777 monitoring.sh``` : Give permission to the script (execute especially).
+
 - ```sudo visudo``` : Open your sudoers file.
+
 - ```your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh``` : Under where its written %sudo ALL=(ALL:ALL) ALL to grant permission to the user to run the script.
+
 - ```sudo reboot```
-- ```sudo crontab -e``` : Open crontab in an editor
+
+- ```sudo crontab -e``` : Open crontab in an editor.
+
 - ```*/10 * * * * /usr/local/bin/monitoring.sh``` : specify .Check [crontab.guru](https://crontab.guru/) for more info about the crontab format. /10 to specify that it has to be run every 10 minutes, not at the 10th minute of every hour, day,…
+
 - ```*/10 * * * * /usr/local/bin/monitoring.sh```
 ## 11- Bonus ⭐
 ### 11.1 - WordPress
