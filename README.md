@@ -133,7 +133,7 @@ We can break down how SSH works into 6 parts :
     
     When your web browser requests a website, the website's web server receives the request, retrieves the necessary files (e.g., HTML, images), and sends them back to your browser.
     
-- **Connection Initiation:** The client sends a connection request to the server on port 22 (the default SSH port). The port number can be configured by changing the `Port 22` directive in **[/etc/ssh/sshd_config](https://www.ssh.com/ssh/sshd_config)**.
+- **Connection Initiation:** The client sends a connection request to the server on port 22 (the default SSH port). The port number can be configured by changing the **[Port 22](https://www.ssh.com/academy/ssh/port)** directive in ```/etc/ssh/sshd_config```.
 - **Authentication:** SSH uses two methods for authentication
     
     Password Authentication: The client provides a username and password for verification.
@@ -209,7 +209,7 @@ IPv6 addresses are longer and written in the format like **`2001:0db8:85a3:0000:
 
 It’s good practice to run the ```sudo ufw enable``` first thing because it turns on the firewall to start enforcing the default policy which is to deny all incoming connections. But this doesn't automatically apply any specific rules. When you define rules, you should run the command “sudo ufw reload” to apply changes to the UFW configuration.
 ### 8.4 - Connecting to SSH remotely
-Port forwarding in VirtualBox is a second approach to allow external connections to the virtual machine. It determines how traffic from the host machine is directed to the virtual machine. By this approach, external systems can connect to the host machine's IP address and port 4242. VirtualBox forwards that connection to the virtual machine's port 4242. However, using the first approach (**`sudo ufw allow 4242`**) allows for direct connection to the virtual machine using the virtual machine's IP address and port 4242.
+Port forwarding in VirtualBox is a second approach to allow external connections to the virtual machine. It determines how traffic from the host machine is directed to the virtual machine. By this approach, external systems can connect to the host machine's IP address and port 4242. VirtualBox forwards that connection to the virtual machine's port 4242. However, using the first approach (```sudo ufw allow 4242```) allows for direct connection to the virtual machine using the virtual machine's IP address and port 4242.
 
 - **Port forwarding** can be achieved by specifying the host port and guest port configuration in Port forwarding in the Network section. Note that the host port is the port on the host machine, and the guest port is the port on the virtual machine. You specify that requests coming to the host machine on port 4242 will be forwarded to port 4242 on the virtual machine.
 - ```sudo systemctl restart ssh``` : updating the configuration including any changes related to the port that the SSH server is listening on.
@@ -345,35 +345,137 @@ mac=$(ip link show | grep ether | awk '{printf $2}’)
 SUDO=$(grep COMMAND /var/log/sudo/sudo.log | wc -l)
 
 wall “
-
 #Architecture : $ARCH
-
 #CPU physical : $PCPU
-
 #vCPU : $VCPU
-
 #Memory Usage: $RAM
-
 #Disk Usage: $DISK
-
 #CPU load: $CPU
-
 #Last boot: $BOOT
-
 #LVM use: $LVM
-
 #Connections TCP : $TCP ESTABLISHED
-
 #User log: $USR
-
 #Network: IP $ip ($mac)
-
 #Sudo : $SUDO cmd “
 ```
 ## 10- Crontab ⏰
+### 
+
+The Crontab (table) command is used to create, view, edit, or delete the cron jobs for a user. Crontab allows you to schedule a task that automates the execution of commands or scripts for a time interval. Cron is chronos (time) in greek. 
+
+- ```chmod 777 monitoring.sh``` : Give permission to the script (execute especially)
+- ```sudo visudo``` : Open your sudoers file.
+- ```your_username ALL=(ALL) NOPASSWD: /usr/local/bin/monitoring.sh``` : Under where its written %sudo ALL=(ALL:ALL) ALL to grant permission to the user to run the script.
+- ```sudo reboot```
+- ```sudo crontab -e``` : Open crontab in an editor
+- ```*/10 * * * * /usr/local/bin/monitoring.sh``` : specify .Check [crontab.guru](https://crontab.guru/) for more info about the crontab format. /10 to specify that it has to be run every 10 minutes, not at the 10th minute of every hour, day,…
+- ```*/10 * * * * /usr/local/bin/monitoring.sh```
 ## 11- Bonus ⭐
 ### 11.1 - WordPress
+content management system for creating and managing websites, built using PHP as its server-side scripting language and paired with a MySQL or MariaDB database. WordPress provides a user-friendly interface and a wide range of themes and plugins. 
+
+```apt install unzip wget```: Install the commands unzip and wget
+
+```wget https://wordpress.org/latest.zip``` : Install WordPress
+
+```unzip latest.zip -d /var/www/html/```: Unzip the file genereated by the previous command.
+
+```cd /var/www/html/wordpress``` : Access the unzipped file.
+
+```sudo chmod -R 755 wordpress``` : Grant the corresponding permissions.
+
 ### 11.2 - PHP
+Hypertext Preprocessor, a server-side scripting language designed for web development. PHP is embedded within HTML code and interpreted by a web server with a PHP processor module before the HTML is sent to the client’s browser, resulting in dynamic web pages. PHP is embedded in WordPress themes to dynamically generate HTML, facilitates database interactions enabling the retrieval and manipulation of data stored in the WordPress database, processes user requests.
+
+```sudo apt install php-cgi php-mysql``` : Install the corresponding PHP packages.
+
+```php -v``` : Check that PHP is installed.
 ### 11.3 - Lighttpd webserver 🌐
+Whenever a user open up a website on their web browser, the browser needs to fetch files (HTML, CSS, JS, images…) to display the webpage correctly, these files are hosted on a webserver, which are requested through HTTP. If the request reaches the webserv and gets accepted, the webserv will look for corresponding documents on the server’s storage, then send them back through HTTP. If the docs could not be found, the server returns a 404 response.
+
+A webserver (such as **lighttpd***) is a software that “serves” content to users, it’s important for delivering resources and web content to users. It can be static or dynamic, the first includes files that don't change often and remain the same for all users, the files dont need any processing it’s suitable for websites with primarily informational content. Dynamic webservers generates websites that can be tailored based on user requests, user interactions, or real-time data.
+
+```sudo apt-get install lighttpd``` : Install the lighttpd package.
+
+```sudo ufw allow http```
+
+```port forwarding 80 ``` Port 80 is the default port for unencrypted HTTP traffic, and it is the standard port through which web browsers communicate with web servers to request and receive web pages.
+
+```sudo lighty-enable-mod fastcgi``` : FastCGI (Fast Common Gateway Interface) is a protocol that enables a web server to delegate the handling of certain dynamic content to external processes. It allows the web server to communicate with external programs or applications that can generate dynamic content.
+
+```sudo lighty-enable-mod fastcgi-php```
+
+```sudo service lighttpd force-reload``` : Reload to apply the changes.
+
 ### 11.4 - MariaDB Database
+MariaDB is a fork of the MySQL relational database management system. It's a powerful and reliable relational database system that offers features, performance improvements, and enhancements over its MySQL roots.
+```apt install mariadb-server mariadb-client```
+
+```systemctl start mariadb```
+
+```systemctl enable mariadb```
+
+```mysql_secure_installation``` : secure your MariaDB server.
+
+```systemctl restart mariadb``` : Restart the database server for the changes to take effect.
+
+```mariadb``` : Access the database
+
+```create DATABASE database_name;```
+
+```show databases;```
+
+```use WordPressDB;```
+
+```CREATE USER 'gemartin'@'localhost' IDENTIFIED BY '12345';```
+
+```GRANT ALL PRIVILEGES ON wp_database.* TO 'gemartin'@'localhost';```
+
+```FLUSH PRIVILEGES;``` : Apply the changes
+
+```use ‘dataB_name’;```
+
+```show tables;```
+
+```show columns from ‘table_name’;``` : Display a list of tables that are present is the Database currently in use.
+
+```select ‘field_name1’, ‘field_name2’ from ‘table_name’;``` : Display the content of a table.
+
+```exit``` : Exit mariaDB.
 ### 11.5 - Aditional service (Fail2ban) ➕
+Fail2ban is a service that ban hosts who cause multiple authentication errors. It's designed to protect Linux servers from malicious activities and unauthorized access attempts by banning their IP addresses. It scans log files like ```/var/log/auth.log``` and bans IP addresses conducting too many failed login attempts. It does this by updating system firewall rules to reject new connections from those IP addresses, for a configurable amount of time.
+```sudo apt-get install fail2ban``` : Install the corresponding fail2ban packages.
+
+```sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local``` : It's safer to work with a copy than the original file itself.
+1 ◦ Access the jail.local fail and try to locate this line of code  ```DEFAULT```, then change the following line to whatever suits you.
+
+```ignoreip = 127.0.0.1/8
+bantime = 10m
+findtime = 10m
+maxretry = 3
+```
+
+**ignoreip** is a whitelist of IP addresses that will never be banned. They have a permanent Get Out of Jail Free card
+
+2 ◦ Next, look for the following line of code ```SSHD``` and add/change the following :
+
+```port : 4242
+enabled = true
+maxretry = 3
+backend = systemd
+logpath = /var/log/auth.log
+```
+3 ◦ Finally, run the following commands in your terminal : 
+
+```sudo systemctl enable fail2ban
+
+sudo systemctl start fail2ban
+
+sudo systemctl status fail2ban
+
+sudo fail2ban-client status
+
+sudo fail2ban-client status sshd
+```
+If you set a longer ban duration (like several hours), but want to allow an IP address to make another connection request sooner, you can parole it early: sudo fail2ban-client set sshd unbanip ‘ip’ for localhost use 10.0.2.2
+
