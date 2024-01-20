@@ -441,6 +441,7 @@ A webserver (such as **lighttpd***) is a software that “serves” content to u
 
 ### 11.4 - MariaDB Database
 MariaDB is a fork of the MySQL relational database management system. It's a powerful and reliable relational database system that offers features, performance improvements, and enhancements over its MySQL roots.
+
 ```apt install mariadb-server mariadb-client```
 
 ```systemctl start mariadb```
