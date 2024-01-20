@@ -1,2 +1,51 @@
 # Born2beRoot
 This is my full born2beroot guide of the 42 school. I hope you find this material useful. I made sure to get into deep details in this guide, including the bonus part of the project as well.
+
+# Table of Contents
+1. [Virtual machine 💿](#1--Virtual-machine-)
+  
+  1.1 [Virtualization and the Hypervisor(VMM)](#11---Virtualization-and-the-Hypervisor-(VMM)-)
+
+  1.2 [Vdi files](#12--Vdi-files-)
+	
+	1.3 [Debian linux](#12--Debian-linux-)
+	
+	1.4 [Rocky linux](#13--Rocky-linux-)
+	
+	1.5 [Debian vs rocky](#14-Debian-vs-rocky-)
+    
+2. [Linux security module (LSM) 🛠](#2--Linux-security-module-(LSM)-)
+3. [Aptitude, apt](#3--Aptitude-apt-)
+4. [Virtual machine setup ⚙️](#4--virtual-machine-setup-%EF%B8%8F)
+
+	4.1 [Installing sudo & configuration of users and groups 👤](#41---installing-sudo--configuration-of-user-and-groups-)
+	
+	4.2 [Installing & configuring SSH 📶](#42---installing--configuring-ssh-)
+	
+	4.3 [Installing & configuring UFW 🔥🧱](#43-installing--configuring-ufw-)
+	
+	4.4 [Setting up the sudo policies 🔒](#44-setting-up-the-sudo-policies-)
+	
+	4.5 [Setting up the strong password policy 🔑](#45-setting-up-a-strong-password-policy-)
+	
+	4.6 [Connecting via SSH 🗣](#46-connecting-via-ssh-)
+	
+5. [Script 🚨](#5--script-)
+
+	5.1 [Total result of the script 🆗](#5-13-total-result-of-the-script)
+	
+6. [Crontab ⏰](#6--crontab-)
+7. [Signature.txt 📝](#7--signaturetxt-)
+8. [Bonus ⭐](#8--bonus-%EF%B8%8F)
+
+	8.1 [Manual partition](#81--manual-partition)
+	
+	8.2 [Wordpress & services configuration 🌐](#82---wordpress--services-configuration-)
+
+	8.3 [Aditional service ➕](#83---aditional-service-)
+
+9. [Correction sheet ✅](#9--correction-sheet-)
+
+	9.1 [Evaluation answers 💯](#91-evaluation-answers-)
+
+	9.2 [Evaluation commands ⌨️](#9-2-evaluation-commands-%EF%B8%8F)
