@@ -187,8 +187,8 @@ This is an important step for remote management and secure communication between
     
     Change the line **#Port22** to **Port 4242** without the # (Hash) in front of it.
     
-- **sudo grep Port /etc/ssh/sshd_config :** this command will read the file directly and show you the current Port value in the file, not necessarily the currently active configuration in memory. If you run the sudo systemctl status ssh, it will show you that the port was not updated.
-- **sudo systemctl restart ssh :** After making changes to the sshd_config file, you need to restart the SSH daemon for the changes to take effect.
+- ```sudo grep Port /etc/ssh/sshd_config``` : this command will read the file directly and show you the current Port value in the file, not necessarily the currently active configuration in memory. If you run the sudo systemctl status ssh, it will show you that the port was not updated.
+- ```sudo systemctl restart ssh``` : After making changes to the sshd_config file, you need to restart the SSH daemon for the changes to take effect.
 ### 8.3 - Installing and Configuring UFW
 ### 
 
@@ -197,9 +197,14 @@ This is an important step for remote management and secure communication between
 The next 2 commands are used to define and update ufw rules. 
 
 - ```sudo ufw allow ssh``` : Allowing traffic for the SSH service and ****permitting incoming connections on the default SSH port (22) in order to be able to connect to your system remotely using SSH. Without this rule, incoming SSH connections would be blocked, and you wouldn't be able to access the system via SSH.
+
 - ```sudo ufw allow 4242``` : Allow traffic on port 4242.
+
 - ```sudo ufw enable``` : This will activate the firewall with the rules you've defined.
-- ```sudo ufw status numbered``` : Display a numbered list of the currently active UFW rules. IPv6 is the most recent **V**ersion of the **I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
+  
+- ```sudo ufw status numbered``` : Display a numbered list of the currently active UFW rules. IPv6 is the most recent **V**ersion of the
+
+**I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
 
 **IPv4 vs. IPv6**:
 
