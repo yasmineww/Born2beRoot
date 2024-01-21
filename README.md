@@ -4,59 +4,63 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
 # Table of Contents
 1. [Virtual machine 💿](#1--Virtual-machine-)
   
-  	1.1 [Virtualization and the Hypervisor(VMM)](#1.1--Virtualization-and-the-Hypervisor(VMM))
+  	1.1 [Virtualization and the Hypervisor(VMM)](#11---virtualization-and-the-hypervisorvmm)
 
-  	1.2 [Vdi files](#1.2--Vdi-files)
+  	1.2 [Vdi files](#12---vdi-files)
 	
-	1.3 [Debian linux](#1.3--Debian-linux)
+	1.3 [Debian linux](#13---debian-linux)
 	
-	1.4 [Rocky linux](#1.4--Rocky-linux)
+	1.4 [Rocky linux](#14---rocky-linux)
     
-2. [Linux security module (LSM) 🛠](#2--Linux-security-module-(LSM)-)
-3. [Aptitude, apt](#3--Aptitude,-apt-)
-4. [LVM (Logical Volume Manager) ⚙️](#4--LVM-logical-volume-manager-%EF%B8%8F)
+2. [Linux security module (LSM) 🛠](#2--linux-security-module-lsm-)
+3. [Aptitude, apt](#3--aptitude-apt)
+4. [LVM (Logical Volume Manager) ⚙️](#4--lvm-logical-volume-manager-%EF%B8%8F)
 
-	4.1 [Physical Volume](#4.1---Physical-Volume-)
+	4.1 [Physical Volume](#41---physical-volume)
 	
-	4.2 [Volume group](#4.2---Volume-group-)
+	4.2 [Volume group](#42---volume-group)
 	
-	4.3 [Logical volume](#4.3-Logical-volume-)
+	4.3 [Logical volume](#43---logical-volume)
 	
-5. [UFW service Firewall 🚨](#5--UFW-service-Firewall-)
+5. [UFW service Firewall 🚨](#5--ufw-service-firewall-)
 	
-6. [SSH Protocol](#6--SSH-Protocol-)
-7. [Setup your machine 📝](#7--Setup-your-machine-)
-8. [Configuration ✅](#9--Configuration-)
+6. [SSH Protocol](#6--ssh-protocol)
+7. [Setup your machine 📝](#7--setup-your-machine-)
+8. [Configuration ✅](#8--configuration-)
 
-	8.1 [Getting system updates and configuring the sudo command](#91-evaluation-answers-)
+	8.1 [Getting system updates and configuring the sudo command](#81---getting-system-updates-and-configuring-the-sudo-command)
 
-	8.2 [SSH configuration](#9-2-evaluation-commands-%EF%B8%8F)
+	8.2 [SSH configuration](#82---ssh-configuration)
    
-   	8.3 [Installing and Configuring UFW](#91-evaluation-answers-)
+   	8.3 [Installing and Configuring UFW](#83---installing-and-configuring-ufw)
    
-   	8.4 [Connecting to SSH remotely](#91-evaluation-answers-)
+   	8.4 [Connecting to SSH remotely](#84---connecting-to-ssh-remotely)
    
-   	8.5 [Setting password policy](#91-evaluation-answers-)
+   	8.5 [Setting password policy](#85---setting-password-policy)
    
-   	8.6 [Creating groups, users, assigning](#91-evaluation-answers-)
+   	8.6 [Creating groups, users, assigning](#86---creating-groups-users-assigning-)
    
-  	8.7 [Configuring Sudoers file, logs, warning message](#91-evaluation-answers-)
+  	8.7 [Configuring Sudoers file, logs, warning message](#87---configuring-sudoers-file-logs-warning-message)
    
-9. [Script](#8--bonus-%EF%B8%8F)"
+9. [Script](#9--script)
 
-10. [Crontab ⏰](#6--crontab-)
-
-11. [Bonus ⭐](#8--bonus-%EF%B8%8F)
-
-	11.1 [WordPress](#81--manual-partition)
-
-   	11.2 [PHP](#81--manual-partition)
+	9.1 [Physical Volume](#91-common-commands)
 	
-	11.3 [Lighttpd webserver 🌐](#82---wordpress--services-configuration-)
+	9.2 [Volume group](#92-script)
+
+10. [Crontab ⏰](#10--crontab-)
+
+11. [Bonus ⭐](#11--bonus-)
+
+	11.1 [WordPress](#111---wordpress)
+
+   	11.2 [PHP](#112---php)
+	
+	11.3 [Lighttpd webserver 🌐](#113---lighttpd-webserver-)
     
-	11.4 [MariaDB Database](#81--manual-partition)
+	11.4 [MariaDB Database](#114---mariadb-database)
 
-	11.5 [Aditional service (Fail2ban) ➕](#83---aditional-service-)
+	11.5 [Aditional service (Fail2ban) ➕](#115---aditional-service-fail2ban-)
 
 ## 1- Virtual machine 💿
 In order to run a separate secondary OS on your machine, you’ll need a Virtual Machine. It's like a computer program that acts like a separate computer, so a virtual computer inside a real computer. It runs inside your physical computer but is isolated from it. It has its own "virtual" hardware (lCPU, memory, storage…) that is simulated by software (hypervisors).
