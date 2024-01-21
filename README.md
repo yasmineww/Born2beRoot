@@ -26,12 +26,12 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
    8.7 [Configuring Sudoers file, logs, warning message](#97-configuring-sudoers-file-logs-warning-message)
 9. [Script](#8-bonus-️)
 10. [Crontab ⏰](#10-crontab-)
-11. [Bonus ⭐](#11-bonus-️)
+11. [Bonus ⭐](#11-bonus-)
    11.1 [WordPress](#111-wordpress)
    11.2 [PHP](#112-php)
-   11.3 [Lighttpd webserver 🌐](#113-lighttpd-webserver-️)
+   11.3 [Lighttpd webserver 🌐](#113-lighttpd-webserver)
    11.4 [MariaDB Database](#114-mariadb-database)
-   11.5 [Additional service (Fail2ban) ➕](#115-additional-service-)
+   11.5 [Additional service (Fail2ban) ➕](#115-additional-service)
 
 ## 1- Virtual machine 💿
 In order to run a separate secondary OS on your machine, you’ll need a Virtual Machine. It's like a computer program that acts like a separate computer, so a virtual computer inside a real computer. It runs inside your physical computer but is isolated from it. It has its own "virtual" hardware (lCPU, memory, storage…) that is simulated by software (hypervisors).
