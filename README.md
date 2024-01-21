@@ -301,7 +301,7 @@ Port forwarding in VirtualBox is a second approach to allow external connections
 A script should start automatically, display informations, run every 10 minutes broadcast to all terminals using wall (send a message to all logged-in users), include banner (optional), avoid displaying error messages directly to the users.
 
 Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores programs you can run)
-### Common commands
+### 9.1 - Common commands
 
 ```grep``` : Search for specific patterns.
 
@@ -322,7 +322,7 @@ Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores pr
 ```mpstat``` : displays cpu processor related info
 
 ```lsblk``` : displays system storage info
-### Script
+### 9.2 - Script
 
 - ```#!/bin/bash``` : shebang, recognize the script as executable and execute based on the specified path to the interpreter (bash).
 - **Architecture of the OS and the kernel version:** ```ARCH=$(uname -a)```
