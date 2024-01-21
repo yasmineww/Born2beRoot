@@ -44,9 +44,9 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
    
 9. [Script](#9--script)
 
-	9.1 [Physical Volume](#91-common-commands)
+	9.1 [Common commands](#91---common-commands)
 	
-	9.2 [Volume group](#92-script)
+	9.2 [Script](#92---script)
 
 10. [Crontab ⏰](#10--crontab-)
 
