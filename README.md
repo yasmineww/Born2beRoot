@@ -4,13 +4,13 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
 # Table of Contents
 1. [Virtual machine 💿](#1--Virtual-machine-)
   
-  	1.1 [Virtualization and the Hypervisor(VMM)](#11-Virtualization-and-the-Hypervisor(VMM))
+  	1.1 [Virtualization and the Hypervisor(VMM)](#11--Virtualization-and-the-Hypervisor(VMM))
 
-  	1.2 [Vdi files](#12-Vdi-files)
+  	1.2 [Vdi files](#12--Vdi-files)
 	
-	1.3 [Debian linux](#12-Debian-linux)
+	1.3 [Debian linux](#12--Debian-linux)
 	
-	1.4 [Rocky linux](#13-Rocky-linux)
+	1.4 [Rocky linux](#13--Rocky-linux)
     
 2. [Linux security module (LSM) 🛠](#2--Linux-security-module-(LSM)-)
 3. [Aptitude, apt](#3--Aptitude,-apt-)
