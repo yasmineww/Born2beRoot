@@ -2,59 +2,36 @@
 This is my full born2beroot guide of the 42 school. I hope you find this material useful. I made sure to get into deep details in this guide, including the bonus part of the project as well.
 
 # Table of Contents
-1. [Virtual machine 💿](#1--Virtual-machine-)
-  
-  	1.1 [Virtualization and the Hypervisor(VMM)](#11-Virtualization-and-the-Hypervisor-)
-
-  	1.2 [Vdi files](#12--Vdi-files-)
-	
-	1.3 [Debian linux](#12--Debian-linux-)
-	
-	1.4 [Rocky linux](#13--Rocky-linux-)
-    
-2. [Linux security module (LSM) 🛠](#2--Linux-security-module-(LSM)-)
-3. [Aptitude, apt](#3--Aptitude,-apt-)
-4. [LVM (Logical Volume Manager) ⚙️](#4--LVM-logical-volume-manager-%EF%B8%8F)
-
-	4.1 [Physical Volume](#41---Physical-Volume-)
-	
-	4.2 [Volume group](#42---Volume-group-)
-	
-	4.3 [Logical volume](#43-Logical-volume-)
-	
-5. [UFW service Firewall 🚨](#5--UFW-service-Firewall-)
-	
-6. [SSH Protocol](#6--SSH-Protocol-)
-7. [Setup your machine 📝](#7--Setup-your-machine-)
-8. [Configuration ✅](#9--Configuration-)
-
-	8.1 [Getting system updates and configuring the sudo command](#91-evaluation-answers-)
-
-	8.2 [SSH configuration](#9-2-evaluation-commands-%EF%B8%8F)
-   
-   	8.3 [Installing and Configuring UFW](#91-evaluation-answers-)
-   
-   	8.4 [Connecting to SSH remotely](#91-evaluation-answers-)
-   
-   	8.5 [Setting password policy](#91-evaluation-answers-)
-   
-   	8.6 [Creating groups, users, assigning](#91-evaluation-answers-)
-   
-  	8.7 [Configuring Sudoers file, logs, warning message](#91-evaluation-answers-)
-   
-9. [Script](#8--bonus-%EF%B8%8F)
-10. [Crontab ⏰](#6--crontab-)
-11. [Bonus ⭐](#8--bonus-%EF%B8%8F)
-
-	11.1 [WordPress](#81--manual-partition)
-
-   	11.2 [PHP](#81--manual-partition)
-	
-	11.3 [Lighttpd webserver 🌐](#82---wordpress--services-configuration-)
-    
-	11.4 [MariaDB Database](#81--manual-partition)
-
-	11.5 [Aditional service (Fail2ban) ➕](#83---aditional-service-)
+1. [Virtual machine 💿](#1--virtual-machine-)
+   1.1 [Virtualization and the Hypervisor(VMM)](#11-virtualization-and-the-hypervisor-vmm)
+   1.2 [Vdi files](#12-vdi-files)
+   1.3 [Debian linux](#13-debian-linux)
+   1.4 [Rocky linux](#14-rocky-linux)
+2. [Linux security module (LSM) 🛠](#2-linux-security-module-lsm)
+3. [Aptitude, apt](#3-aptitude-apt)
+4. [LVM (Logical Volume Manager) ⚙️](#4-lvm-logical-volume-manager-️)
+   4.1 [Physical Volume](#41-physical-volume)
+   4.2 [Volume group](#42-volume-group)
+   4.3 [Logical volume](#43-logical-volume)
+5. [UFW service Firewall 🚨](#5-ufw-service-firewall)
+6. [SSH Protocol](#6-ssh-protocol)
+7. [Setup your machine 📝](#7-setup-your-machine)
+8. [Configuration ✅](#9-configuration)
+   8.1 [Getting system updates and configuring the sudo command](#91-getting-system-updates-and-configuring-the-sudo-command)
+   8.2 [SSH configuration](#92-ssh-configuration)
+   8.3 [Installing and Configuring UFW](#93-installing-and-configuring-ufw)
+   8.4 [Connecting to SSH remotely](#94-connecting-to-ssh-remotely)
+   8.5 [Setting password policy](#95-setting-password-policy)
+   8.6 [Creating groups, users, assigning](#96-creating-groups-users-assigning)
+   8.7 [Configuring Sudoers file, logs, warning message](#97-configuring-sudoers-file-logs-warning-message)
+9. [Script](#8-bonus-️)
+10. [Crontab ⏰](#10-crontab-)
+11. [Bonus ⭐](#11-bonus-️)
+   11.1 [WordPress](#111-wordpress)
+   11.2 [PHP](#112-php)
+   11.3 [Lighttpd webserver 🌐](#113-lighttpd-webserver-️)
+   11.4 [MariaDB Database](#114-mariadb-database)
+   11.5 [Additional service (Fail2ban) ➕](#115-additional-service-)
 
 ## 1- Virtual machine 💿
 In order to run a separate secondary OS on your machine, you’ll need a Virtual Machine. It's like a computer program that acts like a separate computer, so a virtual computer inside a real computer. It runs inside your physical computer but is isolated from it. It has its own "virtual" hardware (lCPU, memory, storage…) that is simulated by software (hypervisors).
