@@ -4,13 +4,13 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
 # Table of Contents
 1. [Virtual machine 💿](#1--Virtual-machine-)
   
-  	1.1 [Virtualization and the Hypervisor(VMM)](#11-Virtualization-and-the-Hypervisor-)
+  	1.1 [Virtualization and the Hypervisor(VMM)](#11-Virtualization-and-the-Hypervisor(VMM))
 
-  	1.2 [Vdi files](#12--Vdi-files-)
+  	1.2 [Vdi files](#12-Vdi-files)
 	
-	1.3 [Debian linux](#12--Debian-linux-)
+	1.3 [Debian linux](#12-Debian-linux)
 	
-	1.4 [Rocky linux](#13--Rocky-linux-)
+	1.4 [Rocky linux](#13-Rocky-linux)
     
 2. [Linux security module (LSM) 🛠](#2--Linux-security-module-(LSM)-)
 3. [Aptitude, apt](#3--Aptitude,-apt-)
@@ -57,8 +57,6 @@ This is my full born2beroot guide of the 42 school. I hope you find this materia
 	11.4 [MariaDB Database](#81--manual-partition)
 
 	11.5 [Aditional service (Fail2ban) ➕](#83---aditional-service-)
-    
-## 1- Virtual machine 💿
 
 ## 1- Virtual machine 💿
 In order to run a separate secondary OS on your machine, you’ll need a Virtual Machine. It's like a computer program that acts like a separate computer, so a virtual computer inside a real computer. It runs inside your physical computer but is isolated from it. It has its own "virtual" hardware (lCPU, memory, storage…) that is simulated by software (hypervisors).
@@ -514,5 +512,5 @@ sudo fail2ban-client status
 
 sudo fail2ban-client status sshd
 ```
-If you set a longer ban duration (like several hours), but want to allow an IP address to make another. connection request sooner, you can parole it early: sudo fail2ban-client set sshd unbanip ‘ip’ for localhost use 10.0.2.2
+If you set a longer ban duration (like several hours), but want to allow an IP address to make another connection request sooner, you can parole it early: ```sudo fail2ban-client set sshd unbanip ‘ip’ ```. For localhost use ```10.0.2.2``` .
 
