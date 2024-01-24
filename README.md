@@ -212,6 +212,8 @@ The next 2 commands are used to define and update ufw rules.
 
 **I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
 
+- ```sudo ufw delete number``` : Delete a rule.
+
 **IPv4 vs. IPv6**:
 
 IPv4 addresses are typically written in the format like **`192.168.1.1`**.
@@ -408,6 +410,11 @@ The Crontab (table) command is used to create, view, edit, or delete the cron jo
 - ```*/10 * * * * /usr/local/bin/monitoring.sh``` : specify .Check [crontab.guru](https://crontab.guru/) for more info about the crontab format. /10 to specify that it has to be run every 10 minutes, not at the 10th minute of every hour, day,…
 
 - ```*/10 * * * * /usr/local/bin/monitoring.sh```
+
+- ``` sudo systemctl stop cron```
+- 
+- ```sudo systemctl start cron```
+- 
 ## 11- Bonus ⭐
 ### 11.1 - WordPress
 content management system for creating and managing websites, built using PHP as its server-side scripting language and paired with a MySQL or MariaDB database. WordPress provides a user-friendly interface and a wide range of themes and plugins. 
