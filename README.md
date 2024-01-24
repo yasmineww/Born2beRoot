@@ -172,7 +172,6 @@ When setting up the partitions, it’s important to allocate some memory for the
 **Mount points** are similar to hidden portals that can teleport you to different storage location within the file system.
 ## 8- Configuration ✅
 ### 8.1 - Getting system updates and configuring the sudo command
-### 
 
 - ```su -``` : Login in as the root user.
 - ```apt update``` : Fetching system updates, -y to automate all permission acceptance.
@@ -196,7 +195,6 @@ This is an important step for remote management and secure communication between
 - ```sudo grep Port /etc/ssh/sshd_config``` : this command will read the file directly and show you the current Port value in the file, not necessarily the currently active configuration in memory. If you run the sudo systemctl status ssh, it will show you that the port was not updated.
 - ```sudo systemctl restart ssh``` : After making changes to the sshd_config file, you need to restart the SSH daemon for the changes to take effect.
 ### 8.3 - Installing and Configuring UFW
-### 
 
 - ```apt-get install ufw```: Installs the UFW package. Next, we’ll have to configure it to allow or deny specific network traffic.
 
@@ -206,15 +204,13 @@ The next 2 commands are used to define and update ufw rules.
 
 - ```sudo ufw allow 4242``` : Allow traffic on port 4242.
 
-- ```sudo ufw enable``` : This will activate the firewall with the rules you've defined.
-  
-- ```sudo ufw status numbered``` : Display a numbered list of the currently active UFW rules. IPv6 is the most recent **V**ersion of the
-
 - ```sudo ufw delete number``` : Delete a rule.
 
-**IPv4 vs. IPv6**:
+- ```sudo ufw enable``` : This will activate the firewall with the rules you've defined.
+  
+- ```sudo ufw status numbered``` : Display a numbered list of the currently active UFW rules. IPv6 is the most recent **V**ersion of the **I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
 
-**I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
+**IPv4 vs. IPv6**:
 
 IPv4 addresses are typically written in the format like **`192.168.1.1`**.
 
@@ -281,9 +277,9 @@ Port forwarding in VirtualBox is a second approach to allow external connections
 
 - ```sudo usermod -aG user42 username``` : Adding the user to the user24 group.
 
-- ```groups``` : See which groups the user account belongs to
+- ```groups``` : See which groups the user account belongs to.
+  
 ### 8.7 - Configuring Sudoers file, logs, warning message
-### 
 
 - ```cd /var/log``` : Access the location where log files are stored, providing information about system events, services, processes.
 
@@ -303,7 +299,8 @@ Port forwarding in VirtualBox is a second approach to allow external connections
 ## 9- Script
 A script should start automatically, display informations, run every 10 minutes broadcast to all terminals using wall (send a message to all logged-in users), include banner (optional), avoid displaying error messages directly to the users.
 
-Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores programs you can run)
+Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores programs you can run).
+
 ### 9.1 - Common commands
 
 ```grep``` : Search for specific patterns.
@@ -325,6 +322,7 @@ Store the **monitoring.sh** script in **/usr/local/bin** (bin since it stores pr
 ```mpstat``` : displays cpu processor related info
 
 ```lsblk``` : displays system storage info
+
 ### 9.2 - Script
 
 - ```#!/bin/bash``` : shebang, recognize the script as executable and execute based on the specified path to the interpreter (bash).
@@ -394,7 +392,6 @@ wall “
 #Sudo : $SUDO cmd “
 ```
 ## 10- Crontab ⏰
-### 
 
 The Crontab (table) command is used to create, view, edit, or delete the cron jobs for a user. Crontab allows you to schedule a task that automates the execution of commands or scripts for a time interval. Cron is chronos (time) in greek. 
 
