@@ -210,17 +210,18 @@ The next 2 commands are used to define and update ufw rules.
   
 - ```sudo ufw status numbered``` : Display a numbered list of the currently active UFW rules. IPv6 is the most recent **V**ersion of the
 
-**I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
-
 - ```sudo ufw delete number``` : Delete a rule.
 
 **IPv4 vs. IPv6**:
+
+**I**nternet **P**rotocol, designed to replace the older IPv4. It is used to identify and locate devices on a network. The presence of "(v6)" in the rule indicates that the rule is for IPv6 traffic, as opposed to the rules without "(v6)" which are for IPv4 traffic. **IP**’s are a set of rules and conventions that govern how data is sent and received over computer networks (providing an addressing scheme, etc..).
 
 IPv4 addresses are typically written in the format like **`192.168.1.1`**.
 
 IPv6 addresses are longer and written in the format like **`2001:0db8:85a3:0000:0000:8a2e:0370:7334`**.
 
 It’s good practice to run the ```sudo ufw enable``` first thing because it turns on the firewall to start enforcing the default policy which is to deny all incoming connections. But this doesn't automatically apply any specific rules. When you define rules, you should run the command “sudo ufw reload” to apply changes to the UFW configuration.
+
 ### 8.4 - Connecting to SSH remotely
 Port forwarding in VirtualBox is a second approach to allow external connections to the virtual machine. It determines how traffic from the host machine is directed to the virtual machine. By this approach, external systems can connect to the host machine's IP address and port 4242. VirtualBox forwards that connection to the virtual machine's port 4242. However, using the first approach (```sudo ufw allow 4242```) allows for direct connection to the virtual machine using the virtual machine's IP address and port 4242.
 
