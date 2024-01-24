@@ -413,9 +413,9 @@ The Crontab (table) command is used to create, view, edit, or delete the cron jo
 - ```*/10 * * * * /usr/local/bin/monitoring.sh```
 
 - ``` sudo systemctl stop cron```
-- 
+  
 - ```sudo systemctl start cron```
-- 
+ 
 ## 11- Bonus ⭐
 ### 11.1 - WordPress
 content management system for creating and managing websites, built using PHP as its server-side scripting language and paired with a MySQL or MariaDB database. WordPress provides a user-friendly interface and a wide range of themes and plugins. 
