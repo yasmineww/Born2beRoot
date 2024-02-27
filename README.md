@@ -491,7 +491,8 @@ Fail2ban is a service that ban hosts who cause multiple authentication errors. I
 ```sudo apt-get install fail2ban``` : Install the corresponding fail2ban packages.
 
 ```sudo cp /etc/fail2ban/jail.conf /etc/fail2ban/jail.local``` : It's safer to work with a copy than the original file itself.
-1 ◦ Access the jail.local fail and try to locate this line of code  ```DEFAULT```, then change the following line to whatever suits you.
+
+1. Access the jail.local fail and try to locate this line of code  ```DEFAULT```, then change the following line to whatever suits you.
 
 ```ignoreip = 127.0.0.1/8
 bantime = 10m
@@ -501,7 +502,7 @@ maxretry = 3
 
 **ignoreip** is a whitelist of IP addresses that will never be banned. They have a permanent Get Out of Jail Free card
 
-2 ◦ Next, look for the following line of code ```SSHD``` and add/change the following :
+2. Next, look for the following line of code ```SSHD``` and add/change the following :
 
 ```port : 4242
 enabled = true
@@ -509,7 +510,7 @@ maxretry = 3
 backend = systemd
 logpath = /var/log/auth.log
 ```
-3 ◦ Finally, run the following commands in your terminal : 
+3. Finally, run the following commands in your terminal : 
 
 ```sudo systemctl enable fail2ban
 
