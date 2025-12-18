@@ -359,7 +359,7 @@ q for quiet, dont print whats grepped
 ss : socket stats, -t : only tcp, -a : all sockets (listening and not), -c : count whats grepped that goes with ESTAB
 
 - **The number of users using the server** : ```USR=$(who | awk '{print $1}' | sort -u | wc -l)```
-- **The IPv4 address of your server and its MAC (Media Access Control) address** : ```ip=$(hostname -I)```, ```mac=$(ip link show | grep ether | awk '{printf $2}’)```
+- **The IPv4 address of your server and its MAC (Media Access Control) address** : ```ip=$(hostname -I)```, ```mac=$(ip link show | grep ether | awk '{printf $2}’)``` (use `hostname -i` instead on Linux)
 - **The number of commands executed with the sudo program** : ```SUDO=$(grep COMMAND /var/log/sudo/sudo.log | wc -l)```
 
 ```
