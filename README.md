@@ -459,8 +459,6 @@ MariaDB is a fork of the MySQL relational database management system. It's a pow
 
 ```systemctl enable mariadb```
 
-```mysql_secure_installation``` : secure your MariaDB server.
-
 ```systemctl restart mariadb``` : Restart the database server for the changes to take effect.
 
 ```mariadb``` : Access the database
