@@ -359,7 +359,7 @@ q for quiet, dont print whats grepped
 ss : socket stats, -t : only tcp, -a : all sockets (listening and not), -c : count whats grepped that goes with ESTAB
 
 - **The number of users using the server** : ```USR=$(who | awk '{print $1}' | sort -u | wc -l)```
-- **The IPv4 address of your server and its MAC (Media Access Control) address** : ```ip=$(hostname -I)```, ```mac=$(ip link show | grep ether | awk '{printf $2}’)```
+- **The IPv4 address of your server and its MAC (Media Access Control) address** : ```ip=$(hostname -I)```, ```mac=$(ip link show | grep ether | awk '{printf $2}’)``` (use `hostname -i` instead on Linux)
 - **The number of commands executed with the sudo program** : ```SUDO=$(grep COMMAND /var/log/sudo/sudo.log | wc -l)```
 
 ```
@@ -425,7 +425,7 @@ content management system for creating and managing websites, built using PHP as
 
 ```cd /var/www/html/wordpress``` : Access the unzipped file.
 
-```sudo chmod -R 755 wordpress``` : Grant the corresponding permissions.
+```sudo chmod -R 755 ../wordpress``` : Grant the corresponding permissions.
 
 ### 11.2 - PHP
 Hypertext Preprocessor, a server-side scripting language designed for web development. PHP is embedded within HTML code and interpreted by a web server with a PHP processor module before the HTML is sent to the client’s browser, resulting in dynamic web pages. PHP is embedded in WordPress themes to dynamically generate HTML, facilitates database interactions enabling the retrieval and manipulation of data stored in the WordPress database, processes user requests.
@@ -458,8 +458,6 @@ MariaDB is a fork of the MySQL relational database management system. It's a pow
 ```systemctl start mariadb```
 
 ```systemctl enable mariadb```
-
-```mysql_secure_installation``` : secure your MariaDB server.
 
 ```systemctl restart mariadb``` : Restart the database server for the changes to take effect.
 
